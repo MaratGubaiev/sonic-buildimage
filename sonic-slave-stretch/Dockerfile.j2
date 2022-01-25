@@ -290,6 +290,10 @@ RUN apt-get update && apt-get install -y \
         python-lxml \
         libexpat1-dev
 
+# Install dependencies for dhcp relay test 
+RUN pip3 install parameterized==0.8.1
+RUN pip2 install parameterized
+
 ## Config dpkg
 ## install the configuration file if it’s currently missing
 RUN sudo augtool --autosave "set /files/etc/dpkg/dpkg.cfg/force-confmiss"
@@ -355,6 +359,7 @@ RUN pip3 install "lxml==4.6.2"
 
 # For sonic-platform-common testing
 RUN pip3 install redis
+RUN pip2 install redis
 
 # For vs image build
 RUN pip2 install pexpect==4.6.0
